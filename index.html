@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>map</title>
+<style>
+*{
+margin:0;
+padding:0;
+}
+#map
+{
+	height:500px;
+	width:100%;
+}
+</style>
+</head>
+<body>
+<div id="map"> </div>
+<script >
+	function initMap() {
+		let urlParams = window.location.search;
+		parmas = urlParams.split('&');
+		let _lat = parseFloat(parmas[0].split('=')[1]);
+		let _long = parseFloat(parmas[1].split('=')[1]);
+		var location = {lat:_lat,lng:_long};
+		var map =new google.maps.Map(document.getElementById("map"),{zoom:4,
+			center:location
+	}); 
+	var marker =new google.maps.Marker({
+	position:location,
+	map:map
+}); 
+} 
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGiwDgGBlIKa053p5urrGhmlbfMvLcXyE &callback=initMap">
+</script> 
+</body>
+</html> 
